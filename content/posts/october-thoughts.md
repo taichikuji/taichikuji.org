@@ -97,7 +97,25 @@ You can CLEARLY tell. Just look at the backgrounds and the rounded corners liter
 
 They make good stuff, and they seem excited about the technology. I just hope this doesn't destroy a good thing.
 
-It brings in money, though. TRMNL seems to need that. It's a pretty niche thing.
+I originally said they seemed to need the money. However I actually was curious about this, and it is not the case at all! They seem to be doing just fine. I am happy for them.
+
+### Poco F5
+
+I own a Poco F5, and damn it's driving me crazy recently!
+
+Every single time I come back from work, during my walk home it just starts going insano mode. I am currently troubleshooting through that. Most likely it's something I touched which I shouldn't have, but, oh well, can you really do. Right?
+
+I have it rooted so that can definitely be an issue.
+
+One thing I know for certain. After this phone I ain't rooting no more. Fuck that shit. It has become so unbearable to even try that I just do not vibe with it anymore. Bank apps don't work at all and you have to go around and around finding sketchy modules to fix it, and sometimes you cannot even fix it.
+
+Take a look at Revolut. If it even detects a sniff of modification on your phone it cannot be installed at all. That's a pain.
+
+I may be even going to iPhone, who knows. I really like the Mac M3 Pro I have at work, so I am genuinely tempted but it's quite an expensive purchase, so not today and not this year. Depends on this Poco F5.
+
+Either that or I go to the "Apple of Android phones" aka Pixel. That would be a good one too, but again, way too expensive for my liking.
+
+I will update on this most likely! Will see.
 
 ### Life
 
