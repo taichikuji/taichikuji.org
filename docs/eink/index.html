@@ -109,13 +109,6 @@
     .project-top { display: flex; justify-content: space-between; gap: 10px; font-size: 10px; letter-spacing: .08em; }
     .project-name { font-family: var(--serif); font-size: clamp(23px, 2.9vw, 45px); line-height: 1.05; letter-spacing: -.055em; }
     .project-desc { font-size: clamp(10px, 1vw, 12px); line-height: 1.45; margin-top: 5px; }
-    .lab-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
-    .lab-card { border: 2px solid var(--ink); padding: clamp(11px, 1.5vw, 18px); text-decoration: none; min-width: 0; display: flex; flex-direction: column; gap: 9px; }
-    .lab-card:hover, .lab-card:focus-visible { background: var(--ink); color: var(--paper); }
-    .lab-symbol { font-family: var(--mono); font-size: clamp(27px, 4.3vw, 64px); line-height: 1; letter-spacing: -.12em; height: clamp(40px, 5vw, 70px); display: flex; align-items: center; }
-    .lab-card h3 { font-family: var(--serif); font-size: clamp(18px, 2.1vw, 30px); letter-spacing: -.04em; margin: 0; line-height: 1.05; }
-    .lab-card p { font-size: clamp(10px, .99vw, 13px); line-height: 1.45; margin: 0; flex: 1; }
-    .lab-card .micro { display: flex; justify-content: space-between; }
     .contact { flex-direction: row; align-items: center; gap: clamp(24px, 5vw, 80px); }
     .contact-copy { flex: 1.3; min-width: 0; }
     .contact .display { font-size: clamp(58px, 8.4vw, 130px); }
@@ -149,9 +142,8 @@
       .section-page .display { font-size: clamp(43px, 5.4vw, 62px); margin-bottom: 12px; }
       .intro .display { font-size: clamp(49px, 7vw, 76px); }
       .work-main .role { margin: 8px 0; }
-      .projects-grid, .lab-grid { gap: 8px; }
+      .projects-grid { gap: 8px; }
       .project { min-height: 90px; }
-      .lab-card { gap: 5px; }
     }
     @media (max-height: 620px) and (min-width: 651px) {
       .page { padding: 12px 20px; }
@@ -169,14 +161,10 @@
       .spec { padding-bottom: 5px; }
       .spec strong { font-size: 10px; }
       .work-tags span { font-size: 9px; padding: 3px; }
-      .projects-grid, .lab-grid { gap: 7px; margin-top: 0; }
+      .projects-grid { gap: 7px; margin-top: 0; }
       .project { min-height: 68px; padding: 7px 10px; }
       .project-name { font-size: clamp(18px, 4.3dvh, 26px); }
       .project-desc { font-size: 9px; margin-top: 3px; }
-      .lab-card { padding: 7px 10px; gap: 4px; }
-      .lab-symbol { height: 25px; font-size: 26px; }
-      .lab-card h3 { font-size: 18px; }
-      .lab-card p { font-size: 9px; }
       .contact .display { font-size: clamp(44px, 11dvh, 76px); }
       .contact-aside a { padding: 8px 4px; font-size: 11px; }
       .contact-end { margin-top: 8px; }
@@ -216,12 +204,6 @@
       .project-top { font-size: 8px; }
       .project-name { font-size: clamp(22px, 5.8vw, 35px); }
       .project-desc { font-size: 9px; line-height: 1.3; }
-      .lab-grid { grid-template-columns: 1fr; gap: 7px; margin-top: 0; }
-      .lab-card { display: grid; grid-template-columns: 48px 1fr; gap: 3px 10px; padding: 9px; }
-      .lab-symbol { grid-row: span 3; height: auto; align-items: start; font-size: 27px; }
-      .lab-card h3 { font-size: 22px; }
-      .lab-card p { font-size: 10px; line-height: 1.35; }
-      .lab-card .micro { font-size: 8px; }
       .contact { flex-direction: column; justify-content: center; align-items: stretch; gap: 12px; }
       .contact-copy { flex: 0 0 auto; }
       .contact .display { font-size: clamp(48px, 12vw, 80px); margin-bottom: 8px; }
@@ -242,9 +224,6 @@
       .project { min-height: 78px; padding: 6px; }
       .project-name { font-size: 21px; }
       .project-desc { font-size: 8px; }
-      .lab-card { padding: 7px; }
-      .lab-card h3 { font-size: 19px; }
-      .lab-symbol { font-size: 23px; }
       .contact-aside a { padding: 7px 5px; }
       .contact .display { font-size: 48px; }
       .intro .display { font-size: 44px; }
@@ -255,6 +234,72 @@
       .paper.refreshing .refresh-layer { animation: none; opacity: 0; }
     }
 
+
+
+    /* Project previews are original screenshots from the linked repositories. */
+    .gallery-page { justify-content: center; }
+    .gallery-page .display { font-size: clamp(41px, 5.4vw, 78px); margin-bottom: 10px; }
+    .gallery-hint { font-size: clamp(10px, 1vw, 13px); line-height: 1.4; margin: 0 0 11px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .gallery-tile {
+      display: flex; flex-direction: column; min-width: 0; gap: 7px;
+      border: 1px solid var(--ink); padding: 7px; text-decoration: none;
+      background: #dadbd2; transition: background .1s;
+    }
+    .gallery-tile:hover, .gallery-tile:focus-visible { background: #bfc2b5; }
+    .gallery-tile img {
+      display: block; width: 100%; height: clamp(72px, 13dvh, 150px);
+      object-fit: contain; background: #f4f4ef;
+      border: 1px solid #989b90; filter: grayscale(1);
+    }
+    .gallery-name {
+      display: block; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      font-size: clamp(9px, .9vw, 12px); font-weight: bold; line-height: 1.2;
+    }
+    .preview-page { flex-direction: column; gap: clamp(6px, 1vw, 12px); padding: clamp(9px, 1.4vw, 18px); }
+    .preview-meta { flex: none; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: clamp(11px, 1.25vw, 16px); }
+    .preview-meta strong { font-family: var(--serif); letter-spacing: -.025em; font-size: clamp(17px, 2vw, 25px); }
+    .preview-kind { color: var(--muted); font-size: clamp(9px, .85vw, 11px); text-transform: uppercase; }
+    .preview-meta a { flex: none; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 11px; border-bottom: 1px solid currentColor; padding-bottom: 3px; }
+    .preview-meta a:hover { background: var(--ink); color: var(--paper); }
+    .preview-frame {
+      flex: 1; min-height: 0; min-width: 0; display: grid; place-items: center;
+      background: #f3f3ec; border: 1px solid var(--ink); overflow: hidden;
+    }
+    .preview-frame img { display: block; width: 100%; height: 100%; object-fit: contain; filter: grayscale(1); }
+    .preview-description { flex: none; font-size: clamp(10px, 1vw, 13px); line-height: 1.35; margin: 0; }
+    @media (max-width: 900px) and (min-width: 651px) {
+      .gallery-page .display { font-size: clamp(36px, 5vw, 65px); }
+      .gallery-tile { padding: 5px; gap: 5px; }
+      .gallery-tile img { height: clamp(58px, 11dvh, 105px); }
+    }
+    @media (max-height: 620px) and (min-width: 651px) {
+      .gallery-page .display { font-size: clamp(31px, 7dvh, 45px); }
+      .gallery-hint { margin-bottom: 5px; }
+      .gallery-tile { gap: 3px; padding: 4px; }
+      .gallery-tile img { height: clamp(42px, 9dvh, 85px); }
+    }
+    @media (max-width: 650px) {
+      .gallery-page { padding: 10px 12px; }
+      .gallery-page .display { font-size: clamp(32px, 8vw, 48px); margin-bottom: 5px; }
+      .gallery-page .serial { font-size: 42px; }
+      .gallery-hint { display: none; }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+      .gallery-tile { gap: 3px; padding: 4px; }
+      .gallery-tile img { height: clamp(36px, 7dvh, 63px); }
+      .gallery-name { font-size: 9px; }
+      .preview-page { padding: 10px; gap: 6px; }
+      .preview-meta { font-size: 10px; }
+      .preview-meta strong { font-size: 17px; }
+      .preview-kind { display: none; }
+      .preview-description { font-size: 10px; }
+    }
+    @media (max-width: 370px), (max-height: 580px) and (max-width: 650px) {
+      .gallery-page .display { font-size: 29px; }
+      .gallery-tile img { height: clamp(34px, 7dvh, 49px); }
+      .gallery-name { font-size: 8px; }
+      .preview-description { font-size: 9px; }
+    }
   </style>
 </head>
 <body>
@@ -317,16 +362,119 @@
             </div>
           </section>
 
-          <section class="page section-page" id="epaper" data-title="E-PAPER" aria-label="E-paper projects" aria-hidden="true" inert>
+          <section class="page section-page gallery-page" id="epaper" data-title="E-PAPER" aria-label="E-paper projects" aria-hidden="true" inert>
             <div class="section-head">
-              <div><span class="eyebrow">04 / E-paper projects</span><h2 class="display">More<br><em>projects.</em></h2></div>
+              <div><span class="eyebrow">04 / E-paper</span><h2 class="display">My e-paper<br><em>plugins.</em></h2></div>
               <span class="serial" aria-hidden="true">04</span>
             </div>
-            <div class="lab-grid">
-              <a class="lab-card" href="https://github.com/taichikuji/trmnl-tamagotchi-plugin" target="_blank" rel="noopener noreferrer"><div class="lab-symbol" aria-hidden="true">[•ᴗ•]</div><h3>TRMNLGotchi</h3><p>My take on the original Tamagotchi, running on e-paper.</p><span class="micro">Open source <span aria-hidden="true">↗</span></span></a>
-              <a class="lab-card" href="https://github.com/taichikuji/trmnl-xiaomi-weather-plugin" target="_blank" rel="noopener noreferrer"><div class="lab-symbol" aria-hidden="true">☼ 18°</div><h3>Xiaomi Weather</h3><p>A weather plugin using Xiaomi's data. Made it for my display.</p><span class="micro">Open source <span aria-hidden="true">↗</span></span></a>
-              <a class="lab-card" href="https://github.com/taichikuji/trmnl-http-pets" target="_blank" rel="noopener noreferrer"><div class="lab-symbol" aria-hidden="true">▤ ▤</div><h3>HTTP Pets</h3><p>Pet photos on an e-paper display. That's pretty much it.</p><span class="micro">Open source <span aria-hidden="true">↗</span></span></a>
+            <p class="gallery-hint">Pick a project to see its actual preview on this display.</p>
+            <nav class="gallery-grid" aria-label="Choose a project preview">
+              <a class="gallery-tile" href="#preview-xiaomi" aria-label="View Xiaomi Weather preview">
+                <img src="https://raw.githubusercontent.com/taichikuji/trmnl-xiaomi-weather-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
+                <span class="gallery-name">Xiaomi Weather</span>
+              </a>
+              <a class="gallery-tile" href="#preview-tamagotchi" aria-label="View TRMNLGotchi preview">
+                <img src="https://raw.githubusercontent.com/taichikuji/trmnl-tamagotchi-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
+                <span class="gallery-name">TRMNLGotchi</span>
+              </a>
+              <a class="gallery-tile" href="#preview-http-pets" aria-label="View HTTP Pets preview">
+                <img src="https://raw.githubusercontent.com/taichikuji/trmnl-http-pets-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
+                <span class="gallery-name">HTTP Pets</span>
+              </a>
+              <a class="gallery-tile" href="#preview-stonks" aria-label="View STONKS preview">
+                <img src="https://raw.githubusercontent.com/taichikuji/trmnl-yahoo-finances-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
+                <span class="gallery-name">STONKS</span>
+              </a>
+              <a class="gallery-tile" href="#preview-metro" aria-label="View TMB Metro Alerts preview">
+                <img src="https://raw.githubusercontent.com/taichikuji/trmnl-tmb-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
+                <span class="gallery-name">TMB Metro Alerts</span>
+              </a>
+              <a class="gallery-tile" href="#preview-energie" aria-label="View Frank Energie preview">
+                <img src="https://raw.githubusercontent.com/taichikuji/trmnl-frank-energie-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
+                <span class="gallery-name">Frank Energie</span>
+              </a>
+              <a class="gallery-tile" href="#preview-laliga" aria-label="View ¿Hay ahora fútbol? preview">
+                <img src="https://raw.githubusercontent.com/taichikuji/trmnl-laliga-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
+                <span class="gallery-name">¿Hay ahora fútbol?</span>
+              </a>
+            </nav>
+          </section>
+
+          <section class="page preview-page" id="preview-xiaomi" data-title="XIAOMI WEATHER" aria-label="Xiaomi Weather preview" aria-hidden="true" inert>
+            <div class="preview-meta">
+              <span><strong>Xiaomi Weather</strong> <span class="preview-kind">/ Weather</span></span>
+              <a href="https://github.com/taichikuji/trmnl-xiaomi-weather-plugin" target="_blank" rel="noopener noreferrer" aria-label="Open Xiaomi Weather on GitHub">GitHub ↗</a>
             </div>
+            <div class="preview-frame">
+              <img src="https://raw.githubusercontent.com/taichikuji/trmnl-xiaomi-weather-plugin/main/TRMNL/media/preview_full.webp" alt="Real full-screen Xiaomi Weather preview from its GitHub repository" loading="eager" decoding="async">
+            </div>
+            <p class="preview-description">Weather forecasts using Xiaomi's weather data.</p>
+          </section>
+
+          <section class="page preview-page" id="preview-tamagotchi" data-title="TRMNLGOTCHI" aria-label="TRMNLGotchi preview" aria-hidden="true" inert>
+            <div class="preview-meta">
+              <span><strong>TRMNLGotchi</strong> <span class="preview-kind">/ Virtual pet</span></span>
+              <a href="https://github.com/taichikuji/trmnl-tamagotchi-plugin" target="_blank" rel="noopener noreferrer" aria-label="Open TRMNLGotchi on GitHub">GitHub ↗</a>
+            </div>
+            <div class="preview-frame">
+              <img src="https://raw.githubusercontent.com/taichikuji/trmnl-tamagotchi-plugin/main/TRMNL/media/preview_full.webp" alt="Real full-screen TRMNLGotchi preview from its GitHub repository" loading="eager" decoding="async">
+            </div>
+            <p class="preview-description">A virtual pet based on the original Tamagotchi.</p>
+          </section>
+
+          <section class="page preview-page" id="preview-http-pets" data-title="HTTP PETS" aria-label="HTTP Pets preview" aria-hidden="true" inert>
+            <div class="preview-meta">
+              <span><strong>HTTP Pets</strong> <span class="preview-kind">/ HTTP status</span></span>
+              <a href="https://github.com/taichikuji/trmnl-http-pets-plugin" target="_blank" rel="noopener noreferrer" aria-label="Open HTTP Pets on GitHub">GitHub ↗</a>
+            </div>
+            <div class="preview-frame">
+              <img src="https://raw.githubusercontent.com/taichikuji/trmnl-http-pets-plugin/main/TRMNL/media/preview_full.webp" alt="Real full-screen HTTP Pets preview from its GitHub repository" loading="eager" decoding="async">
+            </div>
+            <p class="preview-description">HTTP status codes illustrated by animals.</p>
+          </section>
+
+          <section class="page preview-page" id="preview-stonks" data-title="STONKS" aria-label="STONKS preview" aria-hidden="true" inert>
+            <div class="preview-meta">
+              <span><strong>STONKS</strong> <span class="preview-kind">/ Finance</span></span>
+              <a href="https://github.com/taichikuji/trmnl-yahoo-finances-plugin" target="_blank" rel="noopener noreferrer" aria-label="Open STONKS on GitHub">GitHub ↗</a>
+            </div>
+            <div class="preview-frame">
+              <img src="https://raw.githubusercontent.com/taichikuji/trmnl-yahoo-finances-plugin/main/TRMNL/media/preview_full.webp" alt="Real full-screen STONKS preview from its GitHub repository" loading="eager" decoding="async">
+            </div>
+            <p class="preview-description">Charts using Yahoo Finance data. Sample prices shown.</p>
+          </section>
+
+          <section class="page preview-page" id="preview-metro" data-title="TMB METRO ALERTS" aria-label="TMB Metro Alerts preview" aria-hidden="true" inert>
+            <div class="preview-meta">
+              <span><strong>TMB Metro Alerts</strong> <span class="preview-kind">/ Transport</span></span>
+              <a href="https://github.com/taichikuji/trmnl-tmb-plugin" target="_blank" rel="noopener noreferrer" aria-label="Open TMB Metro Alerts on GitHub">GitHub ↗</a>
+            </div>
+            <div class="preview-frame">
+              <img src="https://raw.githubusercontent.com/taichikuji/trmnl-tmb-plugin/main/TRMNL/media/preview_full.webp" alt="Real full-screen TMB Metro Alerts preview from its GitHub repository" loading="eager" decoding="async">
+            </div>
+            <p class="preview-description">Barcelona Metro service notices. Demo alerts shown.</p>
+          </section>
+
+          <section class="page preview-page" id="preview-energie" data-title="FRANK ENERGIE" aria-label="Frank Energie preview" aria-hidden="true" inert>
+            <div class="preview-meta">
+              <span><strong>Frank Energie</strong> <span class="preview-kind">/ Energy</span></span>
+              <a href="https://github.com/taichikuji/trmnl-frank-energie-plugin" target="_blank" rel="noopener noreferrer" aria-label="Open Frank Energie on GitHub">GitHub ↗</a>
+            </div>
+            <div class="preview-frame">
+              <img src="https://raw.githubusercontent.com/taichikuji/trmnl-frank-energie-plugin/main/TRMNL/media/preview_full.webp" alt="Real full-screen Frank Energie preview from its GitHub repository" loading="eager" decoding="async">
+            </div>
+            <p class="preview-description">Electricity and gas prices. Demo prices shown.</p>
+          </section>
+
+          <section class="page preview-page" id="preview-laliga" data-title="¿HAY AHORA FÚTBOL?" aria-label="¿Hay ahora fútbol? preview" aria-hidden="true" inert>
+            <div class="preview-meta">
+              <span><strong>¿Hay ahora fútbol?</strong> <span class="preview-kind">/ Networking</span></span>
+              <a href="https://github.com/taichikuji/trmnl-laliga-plugin" target="_blank" rel="noopener noreferrer" aria-label="Open ¿Hay ahora fútbol? on GitHub">GitHub ↗</a>
+            </div>
+            <div class="preview-frame">
+              <img src="https://raw.githubusercontent.com/taichikuji/trmnl-laliga-plugin/main/TRMNL/media/preview_full.webp" alt="Real full-screen ¿Hay ahora fútbol? preview from its GitHub repository" loading="eager" decoding="async">
+            </div>
+            <p class="preview-description">A display of Spanish football-related IP blocking status. Demo data shown.</p>
           </section>
 
           <section class="page contact" id="elsewhere" data-title="LINKS" aria-label="Contact and links" aria-hidden="true" inert>
