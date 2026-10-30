@@ -242,22 +242,20 @@
     .gallery-page .display { font-size: clamp(36px, 4.7vw, 70px); margin-bottom: 8px; }
     .gallery-hint { margin: 0 0 13px; font-size: clamp(10px, 1vw, 13px); }
     .gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(7px, .9vw, 13px); }
-    .gallery-tile { position: relative; min-width: 0; border: 1px solid var(--ink); background: var(--paper); }
+    .gallery-tile { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--ink); background: var(--paper); }
     .gallery-select { display: block; min-width: 0; text-decoration: none; }
     .gallery-select:hover, .gallery-select:focus-visible { background: #c3c6ba; }
     .gallery-select img {
       display: block; width: 100%; height: auto; aspect-ratio: auto 5 / 3;
       filter: grayscale(1);
     }
-    .gallery-name {
-      display: block; max-width: calc(100% - 27px); overflow: hidden; text-overflow: ellipsis;
-      white-space: nowrap; padding: 7px 8px; font-size: clamp(9px, .9vw, 12px);
-      font-weight: bold; line-height: 1.2;
-    }
     .gallery-repo {
-      position: absolute; right: 0; bottom: 0; padding: 6px 8px; font-weight: bold;
-      font-size: 12px; line-height: 1.2; text-decoration: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 7px;
+      width: 100%; min-width: 0; padding: 7px 8px;
+      border-top: 1px solid var(--ink); text-decoration: none;
+      font-weight: bold; font-size: clamp(9px, .9vw, 12px); line-height: 1.2;
     }
+    .gallery-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .gallery-repo:hover, .gallery-repo:focus-visible { color: var(--paper); background: var(--ink); }
     .preview-view {
       position: absolute; inset: 0; z-index: 7;
@@ -270,14 +268,12 @@
     .paper.is-preview .paper-header, .paper.is-preview .paper-footer { visibility: hidden; }
     @media (max-width: 900px) and (min-width: 651px) {
       .gallery-page .display { font-size: clamp(34px, 4.6vw, 60px); }
-      .gallery-name { padding: 5px 6px; font-size: 10px; }
-      .gallery-repo { padding: 4px 6px; }
+      .gallery-repo { padding: 5px 6px; font-size: 10px; }
     }
     @media (max-height: 620px) and (min-width: 651px) {
       .gallery-page .display { font-size: clamp(30px, 6.5dvh, 50px); }
       .gallery-hint { margin-bottom: 6px; }
-      .gallery-name { padding: 3px 5px; }
-      .gallery-repo { padding: 2px 5px; }
+      .gallery-repo { padding: 3px 5px; }
     }
     @media (max-width: 650px) {
       .gallery-page { padding: 13px; }
@@ -285,15 +281,13 @@
       .gallery-page .serial { display: none; }
       .gallery-hint { font-size: 10px; margin-bottom: 8px; }
       .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
-      .gallery-name { padding: 5px; font-size: 9px; max-width: calc(100% - 19px); }
-      .gallery-repo { padding: 4px 5px; font-size: 10px; }
+      .gallery-repo { padding: 5px; font-size: 9px; }
     }
     @media (max-width: 370px), (max-height: 580px) and (max-width: 650px) {
       .gallery-page .display { font-size: 31px; }
       .gallery-hint { margin-bottom: 5px; font-size: 9px; }
       .gallery-grid { gap: 4px; }
-      .gallery-name { padding: 3px 4px; font-size: 8px; }
-      .gallery-repo { padding: 2px 4px; font-size: 9px; }
+      .gallery-repo { padding: 3px 4px; font-size: 8px; }
     }
   </style>
 </head>
@@ -366,51 +360,44 @@
               <article class="gallery-tile">
                 <a class="gallery-select" href="#preview-xiaomi" aria-label="Show Xiaomi Weather on the e-paper screen">
                   <img src="https://raw.githubusercontent.com/taichikuji/trmnl-xiaomi-weather-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
-                  <span class="gallery-name" title="Xiaomi Weather">Xiaomi Weather</span>
                 </a>
-                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-xiaomi-weather-plugin" target="_blank" rel="noopener noreferrer" aria-label="Xiaomi Weather GitHub repository">↗</a>
+                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-xiaomi-weather-plugin" target="_blank" rel="noopener noreferrer" aria-label="Xiaomi Weather GitHub repository"><span class="gallery-name" title="Xiaomi Weather">Xiaomi Weather</span><span aria-hidden="true">↗</span></a>
               </article>
               <article class="gallery-tile">
                 <a class="gallery-select" data-portrait="https://raw.githubusercontent.com/taichikuji/trmnl-tamagotchi-plugin/main/TRMNL/media/preview_trmnl_x_portrait.webp" href="#preview-tamagotchi" aria-label="Show TRMNLGotchi on the e-paper screen">
                   <img src="https://raw.githubusercontent.com/taichikuji/trmnl-tamagotchi-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
-                  <span class="gallery-name" title="TRMNLGotchi">TRMNLGotchi</span>
                 </a>
-                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-tamagotchi-plugin" target="_blank" rel="noopener noreferrer" aria-label="TRMNLGotchi GitHub repository">↗</a>
+                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-tamagotchi-plugin" target="_blank" rel="noopener noreferrer" aria-label="TRMNLGotchi GitHub repository"><span class="gallery-name" title="TRMNLGotchi">TRMNLGotchi</span><span aria-hidden="true">↗</span></a>
               </article>
               <article class="gallery-tile">
                 <a class="gallery-select" href="#preview-http-pets" aria-label="Show HTTP Pets on the e-paper screen">
                   <img src="https://raw.githubusercontent.com/taichikuji/trmnl-http-pets-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
-                  <span class="gallery-name" title="HTTP Pets">HTTP Pets</span>
                 </a>
-                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-http-pets-plugin" target="_blank" rel="noopener noreferrer" aria-label="HTTP Pets GitHub repository">↗</a>
+                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-http-pets-plugin" target="_blank" rel="noopener noreferrer" aria-label="HTTP Pets GitHub repository"><span class="gallery-name" title="HTTP Pets">HTTP Pets</span><span aria-hidden="true">↗</span></a>
               </article>
               <article class="gallery-tile">
                 <a class="gallery-select" data-portrait="https://raw.githubusercontent.com/taichikuji/trmnl-yahoo-finances-plugin/main/TRMNL/media/preview_trmnl_x_portrait.webp" href="#preview-stonks" aria-label="Show STONKS on the e-paper screen">
                   <img src="https://raw.githubusercontent.com/taichikuji/trmnl-yahoo-finances-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
-                  <span class="gallery-name" title="STONKS">STONKS</span>
                 </a>
-                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-yahoo-finances-plugin" target="_blank" rel="noopener noreferrer" aria-label="STONKS GitHub repository">↗</a>
+                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-yahoo-finances-plugin" target="_blank" rel="noopener noreferrer" aria-label="STONKS GitHub repository"><span class="gallery-name" title="STONKS">STONKS</span><span aria-hidden="true">↗</span></a>
               </article>
               <article class="gallery-tile">
                 <a class="gallery-select" data-portrait="https://raw.githubusercontent.com/taichikuji/trmnl-tmb-plugin/main/TRMNL/media/preview_trmnl_x_portrait.webp" href="#preview-metro" aria-label="Show TMB Metro Alerts on the e-paper screen">
                   <img src="https://raw.githubusercontent.com/taichikuji/trmnl-tmb-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
-                  <span class="gallery-name" title="TMB Metro Alerts">TMB Metro Alerts</span>
                 </a>
-                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-tmb-plugin" target="_blank" rel="noopener noreferrer" aria-label="TMB Metro Alerts GitHub repository">↗</a>
+                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-tmb-plugin" target="_blank" rel="noopener noreferrer" aria-label="TMB Metro Alerts GitHub repository"><span class="gallery-name" title="TMB Metro Alerts">TMB Metro Alerts</span><span aria-hidden="true">↗</span></a>
               </article>
               <article class="gallery-tile">
                 <a class="gallery-select" data-portrait="https://raw.githubusercontent.com/taichikuji/trmnl-frank-energie-plugin/main/TRMNL/media/preview_trmnl_x_portrait.webp" href="#preview-energie" aria-label="Show Frank Energie on the e-paper screen">
                   <img src="https://raw.githubusercontent.com/taichikuji/trmnl-frank-energie-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
-                  <span class="gallery-name" title="Frank Energie">Frank Energie</span>
                 </a>
-                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-frank-energie-plugin" target="_blank" rel="noopener noreferrer" aria-label="Frank Energie GitHub repository">↗</a>
+                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-frank-energie-plugin" target="_blank" rel="noopener noreferrer" aria-label="Frank Energie GitHub repository"><span class="gallery-name" title="Frank Energie">Frank Energie</span><span aria-hidden="true">↗</span></a>
               </article>
               <article class="gallery-tile">
                 <a class="gallery-select" href="#preview-laliga" aria-label="Show ¿Hay ahora fútbol? on the e-paper screen">
                   <img src="https://raw.githubusercontent.com/taichikuji/trmnl-laliga-plugin/main/TRMNL/media/preview_full.webp" alt="" loading="eager" decoding="async">
-                  <span class="gallery-name" title="¿Hay ahora fútbol?">¿Hay ahora fútbol?</span>
                 </a>
-                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-laliga-plugin" target="_blank" rel="noopener noreferrer" aria-label="¿Hay ahora fútbol? GitHub repository">↗</a>
+                <a class="gallery-repo" href="https://github.com/taichikuji/trmnl-laliga-plugin" target="_blank" rel="noopener noreferrer" aria-label="¿Hay ahora fútbol? GitHub repository"><span class="gallery-name" title="¿Hay ahora fútbol?">¿Hay ahora fútbol?</span><span aria-hidden="true">↗</span></a>
               </article>
             </nav>
           </section>
@@ -457,7 +444,7 @@
       const tiles = Array.from(stage.querySelectorAll(".gallery-select"));
       const previews = new Map(tiles.map(tile => [
         tile.hash.slice(1),
-        { src: tile.querySelector("img").src, portrait: tile.dataset.portrait || null, name: tile.querySelector(".gallery-name").textContent }
+        { src: tile.querySelector("img").src, portrait: tile.dataset.portrait || null, name: tile.closest(".gallery-tile").querySelector(".gallery-name").textContent }
       ]));
       const viewer = document.getElementById("preview-view");
       const viewerImage = document.getElementById("preview-image");
